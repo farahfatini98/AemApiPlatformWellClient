@@ -3,19 +3,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System;
-using System.ComponentModel;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using System.Linq;
-using System.Net.Cache;
 using System.Data;
-using System.Data.SqlClient;
-using Microsoft.Data.SqlClient;
 using System.Data.SqlTypes;
-using System.Configuration;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration.Json;
+
 
 
 namespace PlatformWellApiConsumption
@@ -28,7 +20,6 @@ namespace PlatformWellApiConsumption
             try
             {
                 Console.WriteLine("-----AEMEnersol Login----");
-                IConfiguration Configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).AddEnvironmentVariables().AddCommandLine(args).Build();
                 Console.Write("Username = ");
                 String Username = Console.ReadLine();
                 Console.Write("Password = ");
