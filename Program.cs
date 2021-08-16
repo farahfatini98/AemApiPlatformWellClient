@@ -27,7 +27,7 @@ namespace PlatformWellApiConsumption
         {
             try
             {
-                Console.Write("-----AEMEnersol API Login----");
+                Console.Write("-----AEMEnersol Login----");
                 IConfiguration Configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).AddEnvironmentVariables().AddCommandLine(args).Build();
                 Console.Write("Username = ");
                 String Username = Console.ReadLine();
