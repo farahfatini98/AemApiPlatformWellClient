@@ -27,7 +27,7 @@ namespace PlatformWellApiConsumption
         {
             try
             {
-                Console.Write("-----AEMEnersol Login----");
+                Console.WriteLine("-----AEMEnersol Login----");
                 IConfiguration Configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).AddEnvironmentVariables().AddCommandLine(args).Build();
                 Console.Write("Username = ");
                 String Username = Console.ReadLine();
@@ -192,6 +192,23 @@ namespace PlatformWellApiConsumption
                 var DeserializedLoginCred = JsonSerializer.Serialize(LoginCred);
                 client.BaseAddress = new Uri("http://test-demo.aemenersol.com/");
                 var response = await client.PostAsync("api/Account/Login", new StringContent(DeserializedLoginCred.ToString(), System.Text.Encoding.UTF8, "application/json"));
+                if (response != null)
+                {
+                    if (response.StatusCode.ToString() == "OK")
+                    {
+                      
+                        Console.WriteLine("Login Succesful!");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Login Failed!");
+                        Console.WriteLine(response.StatusCode);
+                        Console.ReadKey();
+                        Environment.Exit(0);
+                    }
+
+                }
                 string responseString = await response.Content.ReadAsStringAsync();
                 return "bearer " + responseString.Trim('"').ToString();
 
